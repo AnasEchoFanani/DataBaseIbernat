@@ -13,10 +13,9 @@
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-
             <!-- Other Hibernate properties -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/> <!-- Use MySQL8Dialect for MySQL 8.x -->
-            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- Automatically update schema -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
 
         </properties>
     </persistence-unit>

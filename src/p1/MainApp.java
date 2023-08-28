@@ -15,7 +15,7 @@ public class MainApp {
         EntityManager em = emf.createEntityManager();
 
         // Create a new personne instance
-        personne newPersonne = new personne(1, "Doe", "John", "johndoe", "password123");
+        personne newPersonne = new personne(1, "anas", "John", "johndoe", "password123");
 
         // Start a transaction
         EntityTransaction transaction = em.getTransaction();
