@@ -1,8 +1,12 @@
 package p1;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "etudient")
 public class personne {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
     private String prenom;
@@ -15,6 +19,10 @@ public class personne {
         this.prenom = prenom;
         this.login = login;
         this.pass = pass;
+    }
+
+    public personne() {
+
     }
 
     public String getPass() {

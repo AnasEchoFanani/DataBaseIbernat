@@ -1,24 +1,30 @@
 package p1;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 public class MainApp {
 
     public static void main(String[] args) {
-        personne newPersonne = new personne(1,"Doe","John","johndoe","password123");
+        // Create an EntityManagerFactory based on the persistence unit defined in persistence.xml
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-persistence-unit");
 
-        // Create the Hibernate session factory
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        // Create an EntityManager
+        EntityManager em = emf.createEntityManager();
 
-        // Create a session
-        Session session = sessionFactory.openSession();
+        // Create a new personne instance
+        personne newPersonne = new personne(1, "Doe", "John", "johndoe", "password123");
 
-        Transaction tx = session.beginTransaction();
-        session.save(newPersonne);
-        tx.commit();
-        session.close();
+        // Start a transaction
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        // Persist the newPersonne entity
+        em.merge(newPersonne);
+        transaction.commit();
+        em.close();
+
+        emf.close();
     }
 }
