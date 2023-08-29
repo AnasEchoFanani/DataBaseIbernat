@@ -12,13 +12,25 @@ public class personne {
     private String prenom;
     private String login;
     private String pass;
+    @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_c")
+    private Cate cate;
 
-    public personne(int id, String nom, String prenom, String login, String pass) {
+    public personne(int id, String nom, String prenom, String login, String pass, Cate cate) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.login = login;
         this.pass = pass;
+        this.cate = cate;
+    }
+
+    public Cate getCate() {
+        return cate;
+    }
+
+    public void setCate(Cate cate) {
+        this.cate = cate;
     }
 
     public personne() {

@@ -14,17 +14,29 @@ public class MainApp {
         // Create an EntityManager
         EntityManager em = emf.createEntityManager();
 
-        // Create a new personne instance
-        personne newPersonne = new personne(1, "anas", "John", "johndoe", "password123");
+        // Create a new Cate entity
+        Cate newCate = new Cate("cat");
+
+        // Create a new personne entity and associate it with the new Cate
+        personne newPersonne = new personne();
+        newPersonne.setId(1);
+        newPersonne.setNom("anas");
+        newPersonne.setPrenom("John");
+        newPersonne.setLogin("johndoe");
+        newPersonne.setPass("password123");
+        newPersonne.setCate(newCate); // Associate the new Cate with the new personne
 
         // Start a transaction
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        // Persist the newPersonne entity
-        em.merge(newPersonne);
-        transaction.commit();
-        em.close();
 
+        // Persist the new Cate and personne entities
+        em.merge(newPersonne);
+
+        // Commit the transaction
+        transaction.commit();
+
+        em.close();
         emf.close();
     }
 }
