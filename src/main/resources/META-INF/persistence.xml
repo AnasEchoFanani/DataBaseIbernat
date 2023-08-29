@@ -16,6 +16,7 @@
             <!-- Other Hibernate properties -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/> <!-- Use MySQL8Dialect for MySQL 8.x -->
             <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
 
         </properties>
     </persistence-unit>
